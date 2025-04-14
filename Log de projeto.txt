@@ -1,0 +1,77 @@
+Legenda: () - nome do recursos
+         {} - codigo usado para ativar o recurso
+         [] - nome de arquivo que deve ser utilizado
+         "" - Linhas de codigo
+
+tecnologias:
+Vite - ferramenta de desenvolvimento de sistema front- end
+
+tailwind CSS- biblioteca de estilos pre definidos, voce vai incorporar as classes no seu projeto para agilizar
+
+---------------------------------------------------------------------------
+
+criar o repositorio no github, para manter o sistema versionado com o git, para construir no pc de forma a linkar com o repositorio, abrir o vscode, abrir a pasta de projeto, criar uma nova pasta com o nome do projeto, abrir um novo terminal e colar o seguinte codigo:
+(echo "# NovoCalculadoraInvestimentos" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Jai-dev-01/NovoCalculadoraInvestimentos.git
+git push -u origin main)
+
+codigo esse que voce vai encontrar assim que criar o repositorio no github
+
+configuração do Vite: 
+obs:(para procurar algo sobre como funciona o Vite, voce deve ir na pagina inicial do Vite(https://vite.dev/) e na opção Get Started, isso vai abrir a documentação do site ensinando tudo que voce precisa saber )
+na opção Scaffolding Your First Vite Project,
+voce tem 3 recursos para iniciar o Vite, nesse projeto usaremos o (npm) copie o codigo na aba do npm:
+{npm create vite@latest}
+cole no terminal e execute
+
+apos a execução, quando aparecer as opçoes escolha a de limpar os arquivos da pasta e continuar, depois nomeio o arquivo [package] e selecione a versão {vanilla} eselecione a versão que voce deseja, {TypeScript} ou {JavaScript}, nesse caso será o {JavaScript} com isso o Vite estaraá disponivel para uso do seu projeto, o arquivo [README.md] sera apagado, você deve ir ao (controle de código-fonte), abaixo de (pesquisar) e desfazer a alteração, para restaurar o mesmo.
+
+apos isso volte para o terminal e siga os proximos passos, usando os comando:
+{npm install}, para instalar os pacotes que o (Vite) irá precisar e {npm run dev}, para criar o servidor de desenvolvimento do seu projeto, semelhante a extensão do vsCode (Go live), mas com melhores funcionalidades, após abrir o projeto pelo servidor do (Vite), vá a pasta do projeto e apague os arquivos de (javaScript) e limpe o arquivo (CSS) para preparar pro (tailwind)
+
+(Tailwind):OBS(Selecione a v3.4.17 antes da instalação, as outras deram algum tipo de erro) abra o site do Tailwind (https://v3.tailwindcss.com/) vá em Get Started e Selecione a opção que deseja utilizar dentre as 4 disponiveis, a utilizzada no projeto sera a Using PostCSS e siga o passo a passo da pagina.
+
+passo 1: instalar o npm do tailwind com os codigos abaixo:
+{npm install -D tailwindcss@3 postcss autoprefixer}
+{npx tailwindcss init}
+
+passo 2: após a instalação, crie o arquivo {postcss.config.js} e cole o codigo abaixo, para exportar o arquivo de modularização
+"export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  }
+}"
+
+passo 3: no arquivo {tailwind.config.js}, vai ter o segunte codigo "/** @type {import('tailwindcss').Config} */
+export default = {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}"
+
+dentro do content, voce deve colar a seguinte string ("./src/**/*.{html,js}", "./*.{html,js}")
+
+passo 4: adicionar o seguinte codigo no arquivo de (CSS) criado "@tailwind base;
+@tailwind components;
+@tailwind utilities;", não esquecer de linkar o (Css) no (html)
+
+OBS(Para o Vite identificar as atualizações do tailwind, é necessario finalizar o servidor e reabrir o mesmo e ao reiniciar o projeto, sempre iniciar o servidor do Vite com o {npm run dev})
+---------------------------------------------------------------------------
+uso do diplay grid(grade): cria uma grade de colunas e linhas definidos pelo dev. no caso desse projeto, usamos 3 colunas e 2 linhas como no codigo abaixo:
+"grid grid-cols-3 grid-rows-2" (lembrando que esses codigos são do tailwind, no Css é usado "Display: grid;")
+
+para faze com que uma coluna ocupe as 2 linhas como no projeto, deve se usar o "row-span-2", do caso desse projeto seria essa opção, isso faz com que a coluna fique toda por uma e não mais dividida
+
+o body deve ocupar 100% de sua tela usando o comando
+"heigth: 100dvh"
+
+---------------------------------------------------------------------------
+
+commits: para criar uma nova branch, deve-se usar o codigo {git checkout -b nome_da_branch, sem espaços}, para trocar a branch, use {git checkout nome_da_branch}
