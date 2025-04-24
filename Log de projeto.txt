@@ -8,6 +8,8 @@ Vite - ferramenta de desenvolvimento de sistema front- end
 
 tailwind CSS- biblioteca de estilos pre definidos, voce vai incorporar as classes no seu projeto para agilizar
 
+Npm js: biblioteca de gráficos (https://www.npmjs.com/),(obs:. lembrando que o modelo usado foio chart.js, que funciiona para o vanilla, que é o javascript puro) após a instalação, você escolhe o tipo de grafico que deseja usar em chart types, 
+
 ---------------------------------------------------------------------------
 
 criar o repositorio no github, para manter o sistema versionado com o git, para construir no pc de forma a linkar com o repositorio, abrir o vscode, abrir a pasta de projeto, criar uma nova pasta com o nome do projeto, abrir um novo terminal e colar o seguinte codigo:
@@ -75,3 +77,11 @@ o body deve ocupar 100% de sua tela usando o comando
 ---------------------------------------------------------------------------
 
 commits: para criar uma nova branch, deve-se usar o codigo {git checkout -b nome_da_branch, sem espaços}, para trocar a branch, use {git checkout nome_da_branch}
+{git add .} = verifica os arquivos modificados e pprepara para comitar
+{git commit -m ''} = insere uma mensagem do que foi feito no commit daquela branch
+{git pull} = Garante que a versão da main que você tem no seu pc é a mesma que esta no github, isso é bastante comum quando se está trabalhando em equipe.
+na branch secundaria, voce deve usar o comando {git merge main}, para unir o conteudo da branch secundaria com a principal na branch secundaria, para caso haja algum conflito entre seu codigo e o que já está na principal, voce possa corrigir antes de mandar para a principal.
+
+depois de testada e tudo estiver ok, faz o processo inverso, na branch main, usa o comando {git merge nome_da_branch_secundaria} para atualizar e deixar o codigo o mais atualizado possivel com o seu progresso incluso
+
+deposi disso tudo, voce dá um {git push} para jogar todo o progresso direto no github.
