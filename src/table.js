@@ -2,7 +2,7 @@ const isNonEmptyArray = (arrayElement) => {
   return Array.isArray(arrayElement) && arrayElement.length > 0;
 };
 
-const createTable = (columsArray, dataArray, tableId) => {
+export const createTable = (columsArray, dataArray, tableId) => {
   if (
     !isNonEmptyArray(columsArray) ||
     !isNonEmptyArray(dataArray) ||
@@ -18,10 +18,10 @@ const createTable = (columsArray, dataArray, tableId) => {
   }
 
   createTableHeader(tableElement, columsArray);
-  createTableBody();
+  createTableBody(tableElement, dataArray, columsArray);
 };
 
-function createTableHeader(tableReference, columsArray) {
+function createTableHeader(tableReference, columnsArray) {
   function createTheadElement(tableReference) {
     const thead = document.createElement("thead");
     tableReference.appendChild(thead);
@@ -37,5 +37,21 @@ function createTableHeader(tableReference, columsArray) {
   tableHeaderReference.appendChild(headerRow);
 }
 function createTableBody(tableReference, tableItems, columnsArray) {
-  
+  function createTbodyElement(tableReference) {
+    const tbody = document.createElement("tbody");
+    tableReference.appendChild(thead);
+    return tbody;
+  }
+  const tableBodyReference =
+    tableReference.querySelector("tbody") ?? createTbodyElement(tableReference);
+
+  for (const [itemIndex, tableItem] of tableItems.entries()) {
+    const tableRow = document.createElement("tr");
+    for (const tableColumn of columnsArray) {
+      tableRow.innerHTML += /*html*/ `<td class="text-center">${
+        tableItem[tableColumn.accessor]
+      }</td>`;
+    }
+    tableBodyReference.appendChild(tableRow);
+  }
 }
