@@ -2,9 +2,9 @@ const isNonEmptyArray = (arrayElement) => {
   return Array.isArray(arrayElement) && arrayElement.length > 0;
 };
 
-export const createTable = (columsArray, dataArray, tableId) => {
+export const createTable = (columnsArray, dataArray, tableId) => {
   if (
-    !isNonEmptyArray(columsArray) ||
+    !isNonEmptyArray(columnsArray) ||
     !isNonEmptyArray(dataArray) ||
     !tableId
   ) {
@@ -17,8 +17,8 @@ export const createTable = (columsArray, dataArray, tableId) => {
     throw new error("Id informado não corresponde a nenhum elemento table");
   }
 
-  createTableHeader(tableElement, columsArray);
-  createTableBody(tableElement, dataArray, columsArray);
+  createTableHeader(tableElement, columnsArray);
+  createTableBody(tableElement, dataArray, columnsArray);
 };
 
 function createTableHeader(tableReference, columnsArray) {
@@ -36,21 +36,43 @@ function createTableHeader(tableReference, columnsArray) {
   }
   tableHeaderReference.appendChild(headerRow);
 }
+// function createTableBody(tableReference, tableItems, columnsArray) {
+//   function createTbodyElement(tableReference) {
+//     const tbody = document.createElement("tbody");
+//     tableReference.appendChild(thead);
+//     return tbody;
+//   }
+//   const tableBodyReference =
+//     tableReference.querySelector("tbody") ?? createTbodyElement(tableReference);
+
+//   for (const [itemIndex, tableItem] of tableItems.entries()) {
+//     const tableRow = document.createElement("tr");
+//     for (const tableColumn of columnsArray) {
+//       tableRow.innerHTML += /*html*/ `<td class="text-center">${
+//         tableItem[tableColumn.accessor]
+//       }</td>`;
+//     }
+//     tableBodyReference.appendChild(tableRow);
+//   }
+// }
+
 function createTableBody(tableReference, tableItems, columnsArray) {
-  function createTbodyElement(tableReference) {
-    const tbody = document.createElement("tbody");
-    tableReference.appendChild(thead);
-    return tbody;
+  function createTBodyElement(tableReference) {
+    const tBody = document.createElement("tbody");
+    tableReference.appendChild(tBody);
+    return tBody;
   }
   const tableBodyReference =
-    tableReference.querySelector("tbody") ?? createTbodyElement(tableReference);
+    tableReference.querySelector("tbody") ?? createTBodyElement(tableReference);
 
   for (const [itemIndex, tableItem] of tableItems.entries()) {
     const tableRow = document.createElement("tr");
+
     for (const tableColumn of columnsArray) {
-      tableRow.innerHTML += /*html*/ `<td class="text-center">${
+      const formatFn = tableColumn.format ?? ((info) => info);
+      tableRow.innerHTML += /*html*/ `<td class="text-center">${formatFn(
         tableItem[tableColumn.accessor]
-      }</td>`;
+      )}</td>`;
     }
     tableBodyReference.appendChild(tableRow);
   }

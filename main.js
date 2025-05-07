@@ -9,16 +9,32 @@ const clearFormButton = document.getElementById("clear-form");
 let doughnutChartReference = {};
 let progressionChartReference = {};
 const columnsArray = [
-  { columnLabel: "total Investido", accessor: "investedAmount" },
-  { columnLabel: "Rendimento Mensal", accessor: "interestReturns" },
-  { columnLabel: "Rendimento total", accessor: "totalInterestReturns" },
   { columnLabel: "Mês", accessor: "month" },
-  { columnLabel: "Quantia Total", accessor: "totalAmount" },
+  {
+    columnLabel: "total Investido",
+    accessor: "investedAmount",
+    format: (numberInfo) => formatCurrency(numberInfo),
+  },
+  {
+    columnLabel: "Rendimento Mensal",
+    accessor: "interestReturns",
+    format: (numberInfo) => formatCurrency(numberInfo),
+  },
+  {
+    columnLabel: "Rendimento total",
+    accessor: "totalInterestReturns",
+    format: (numberInfo) => formatCurrency(numberInfo),
+  },
+  {
+    columnLabel: "Quantia Total",
+    accessor: "totalAmount",
+    format: (numberInfo) => formatCurrency(numberInfo),
+  },
 ];
 const calculateButton = document.getElementById("calculate-results");
 
 function formatCurrency(value) {
-  return value.toFixed(2);
+  return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
 function isObjectEmpty(obj) {
