@@ -85,3 +85,6 @@ na branch secundaria, voce deve usar o comando {git merge main}, para unir o con
 depois de testada e tudo estiver ok, faz o processo inverso, na branch main, usa o comando {git merge nome_da_branch_secundaria} para atualizar e deixar o codigo o mais atualizado possivel com o seu progresso incluso
 
 deposi disso tudo, voce dá um {git push} para jogar todo o progresso direto no github.
+---------------------------------------------------------------------------------
+quando voce colocar o unicode decimal de um icone no html, voce deve colocar logo apos o (;) para que o navegador saiba que deve pegar o icone correspondente,como o exemploabaixo
+<button>&#8250;</button> (icone de seta pra direita)
